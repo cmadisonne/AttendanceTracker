@@ -1,0 +1,4 @@
+{% extends  'attendanceApp/index.html'%}
+{% load static %}
+
+

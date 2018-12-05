@@ -1,1 +1,32 @@
-<h1>This is a test</h1>
+{# Testing here #}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'attendanceApp/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'attendanceApp/css/index.css' %}">
+
+
+
+
+{% block jumbotron %}
+<div class="jumbotron">
+    <div class="row justify-content-center">
+        <h1> Class Attendance</h1>
+    </div>
+    <div class="row justify-content-center">
+
+        {% for item in students %}
+
+        <h1>{{item.lastName}}</h1>
+
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
+
+
+
+
+
+<script src="{% static 'attendanceApp/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static  'attendanceApp/bootstrap.js' %}"></script>

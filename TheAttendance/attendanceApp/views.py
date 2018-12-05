@@ -1,6 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import attendanceModel
 
 
 def index(request):
-    return render(request, 'attendanceApp/index.html', )
+    students = attendanceModel.objects.all()
+    context = {'students': students}
+    return render(request, 'attendanceApp/index.html', context)
+
+
+
