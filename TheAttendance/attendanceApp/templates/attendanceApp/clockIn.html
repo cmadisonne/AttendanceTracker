@@ -1,5 +1,23 @@
 {% extends "attendanceApp/index.html" %}
 
 {% block jumbotron %}
-
+<div class="setup" align="middle">
+    <div class="card text-center" style="width: 500px">
+        <div class="card-header">
+            <h1>Clock In</h1>
+        </div>
+        <div class="card-body">
+            <div class="transactionForm" align="middle">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="btn btn-secondary" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <p>Make Today Count</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
