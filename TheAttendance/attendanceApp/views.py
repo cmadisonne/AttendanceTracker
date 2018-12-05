@@ -10,7 +10,18 @@ def index(request):
     context = {'students': students}
     return render(request, 'attendanceApp/index.html', context)
 
-def clockIn(request):
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = UserCreationForm()
+        return render(request, 'attendanceApp/signUp.html', {'form': form})
+
+def clockIn(request,pk):
+    student_instance = get_object_or_404(attendanceModel, pk=pk)
     if request.method == 'POST':
         form = clockInForm(request.POST)
         if form.is_valid():
@@ -21,7 +32,7 @@ def clockIn(request):
         form = clockInForm()
         return render(request, 'attendanceApp/clockIn.html', {'form':form})
 
-def clockOut(request):
+def clockOut(request,pk):
     if request.method == 'POST':
         form = clockOutForm(request.POST)
         if form.is_valid():
