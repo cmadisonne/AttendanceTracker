@@ -9,4 +9,4 @@ class attendanceModel(models.Model):
     clockOut = models.DateTimeField(datetime.now)
 
     def __unicode__(self):
-        return self.username
+        return self.lastName

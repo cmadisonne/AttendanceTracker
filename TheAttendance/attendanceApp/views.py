@@ -7,5 +7,6 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-#     Landing Page for user to log in or sign-up
-
+    students = attendanceModel.objects.all()
+    context = {'students': students}
+    return render(request, 'attendanceApp/index.html', context)
