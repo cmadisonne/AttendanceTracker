@@ -12,13 +12,14 @@
     <div class="row justify-content-center">
         <h1> Class Attendance</h1>
     </div>
-
-    {% for item in students %}
     <div class="row justify-content-center">
 
-        <h1>{{item.lastName}}</h1>
+        {% for item in students %}
+
+        <h1>{{item.username}}</h1>
+
+        {% endfor %}
     </div>
-    {% endfor %}
 
 </div>
 {% endblock %}
