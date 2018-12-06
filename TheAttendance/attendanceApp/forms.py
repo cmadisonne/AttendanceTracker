@@ -1,9 +1,9 @@
-from .models import attendanceModel
+from .models import clockOut, clockIn
 from django import forms
 
 class clockInForm(forms.ModelForm):
     class Meta:
-        model = attendanceModel
+        model = clockIn
         fields = {'username', 'password', 'clockIn'}
         widgets = {
             'password': forms.PasswordInput(),
@@ -12,7 +12,7 @@ class clockInForm(forms.ModelForm):
 
 class clockOutForm(forms.ModelForm):
     class Meta:
-        model = attendanceModel
+        model = clockOut
         fields = {'username', 'password', 'clockOut'}
         widgets = {
             'password': forms.PasswordInput(),

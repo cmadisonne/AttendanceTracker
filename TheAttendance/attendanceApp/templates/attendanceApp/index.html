@@ -4,24 +4,40 @@
 <link rel="stylesheet" href="{% static 'attendanceApp/bootstrap.css' %}">
 <link rel="stylesheet" href="{% static 'attendanceApp/css/index.css' %}">
 
-
-
+<div align="middle" class="history">
+    <H1>{{user.get_username}} Attendance History</H1>
+    <hr width="75%" class="hr"/>
 
 {% block jumbotron %}
-<div class="jumbotron">
-    <div class="row justify-content-center">
-        <h1> Class Attendance</h1>
-    </div>
-    <div class="row justify-content-center">
+    {% if clockInRecord or clockOutRecord%}
 
-        {% for item in students %}
+    <table>
+        <tr>
+            <th>Clocked-In</th>
+            <th>Clocked-Out</th>
+        </tr>
+        <tr>
+            {% for record in clockInRecord %}
+            <td>{{ record.clockIn }}</td>
+            {% endfor %}
+            {% for record in clockOutRecord %}
+            <td>{{record.clockOut}}</td>
+            {% endfor %}
 
-        <h1>{{item.username}}</h1>
-
-        {% endfor %}
-    </div>
+        </tr>
+    </table>
 
 </div>
+
+{% else %}
+
+<div align="middle">
+    <div class="UserSetUp">
+        <h1> Welcome!</h1>
+        <p>No Attendance Available.</p>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
 
 
