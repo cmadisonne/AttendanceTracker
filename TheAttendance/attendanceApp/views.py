@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
 from .models import clockOut, clockIn
 from .forms import clockInForm, clockOutForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.contrib.auth import logout
 
 @login_required
 def index(request):
@@ -31,7 +31,7 @@ def timeIn(request):
             form.password = form.cleaned_data['password']
             form.clockIn = form.cleaned_data['clockIn']
             form.save()
-            return redirect('index')
+            return redirect('clock')
     else:
         form = clockInForm()
         return render(request, 'attendanceApp/clockIn.html', {'form':form})
@@ -44,10 +44,11 @@ def timeOut(request):
             form.password = form.cleaned_data['password']
             form.clockOut = form.cleaned_data['clockOut']
             form.save()
-            return redirect('index')
+            return redirect('clock')
     else:
         form = clockOutForm()
         return render(request, 'attendanceApp/clockOut.html', {'form':form})
 
 def base (request):
     return render(request, 'attendanceApp/base.html')
+
