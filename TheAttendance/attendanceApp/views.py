@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from .models import attendanceModel
+from .models import clockOut, clockIn
 from .forms import clockInForm, clockOutForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
+@login_required
 def index(request):
-    students = attendanceModel.objects.all()
-    context = {'students': students}
+    clockInRecord = clockIn.objects.filter(username=request.user)
+    clockOutRecord = clockOut.objects.filter(username=request.user)
+    context = {'clockInRecord': clockInRecord, 'clockOutRecord': clockOutRecord}
     return render(request, 'attendanceApp/index.html', context)
 
 def signup(request):
@@ -20,24 +23,27 @@ def signup(request):
         form = UserCreationForm()
         return render(request, 'attendanceApp/signUp.html', {'form': form})
 
-def clockIn(request,pk):
-    student_instance = get_object_or_404(attendanceModel, pk=pk)
+def timeIn(request):
     if request.method == 'POST':
         form = clockInForm(request.POST)
         if form.is_valid():
-            newForm = form.save(commit=False)
-            newForm.save()
+            form.username = request.user
+            form.password = form.cleaned_data['password']
+            form.clockIn = form.cleaned_data['clockIn']
+            form.save()
             return redirect('index')
     else:
         form = clockInForm()
         return render(request, 'attendanceApp/clockIn.html', {'form':form})
 
-def clockOut(request,pk):
+def timeOut(request):
     if request.method == 'POST':
         form = clockOutForm(request.POST)
         if form.is_valid():
-            newForm = form.save(commit=False)
-            newForm.save()
+            form.username = request.user
+            form.password = form.cleaned_data['password']
+            form.clockOut = form.cleaned_data['clockOut']
+            form.save()
             return redirect('index')
     else:
         form = clockOutForm()
