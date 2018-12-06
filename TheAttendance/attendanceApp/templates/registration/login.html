@@ -8,7 +8,11 @@
 {% if user.is_authenticated %}
 <p>Your account doesn't have access to this page. To proceed,
     please login with an account that has access.</p>
+
+{% else %}
+
 {% endif %}
+
 {% endif %}
 
 <div align="middle">
@@ -46,4 +50,6 @@
         <a style="text-underline: darkblue" href="{% url 'signUp' %}">Sign Up</a>
     </div>
 </div>
+
+
 {% endblock %}
