@@ -1,0 +1,36 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'attendanceApp/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'attendanceApp/css/base.css' %}">
+
+<div align="middle" class="jumbotron">
+</div>
+
+{% block jumbotron %}
+<div class="card text-center">
+    <div class="card-header">
+        <img src="{% static 'codeCrew.png' %}" class="codeCrewLogo">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Hello</h5>
+        <p class="card-text">Would you like to clock-in or clock-out?</p>
+        <span>
+            <a href="{% url 'clockIn' %}"><button class="btn btn-warning btn-lg">Clock-In</button></a>
+            <a href="{% url 'clockOut' %}"><button class="btn btn-warning btn-lg">Clock-Out</button></a>
+        </span>
+    </div>
+    <div class="card-footer text-muted">
+        The Best Things Arrive On Time
+    </div>
+</div>
+
+
+
+
+
+<div class="base">
+</div>
+{% endblock %}
+
+<script src="{% static 'attendanceApp/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static  'attendanceApp/bootstrap.js' %}"></script>

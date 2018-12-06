@@ -48,3 +48,6 @@ def timeOut(request):
     else:
         form = clockOutForm()
         return render(request, 'attendanceApp/clockOut.html', {'form':form})
+
+def base (request):
+    return render(request, 'attendanceApp/base.html')
