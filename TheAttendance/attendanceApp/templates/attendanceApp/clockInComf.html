@@ -1,0 +1,18 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'attendanceApp/bootstrap.css' %}">
+</head>
+<body>
+
+<div class="alert alert-success" role="alert" style="text-align: center">
+    <h4 class="alert-heading">You're Clocked In!</h4>
+    <hr>
+    <a href="{% url 'clock' %}"><button class="btn btn-success btn-lg">Back</button></a>
+</div>
+</body>
+<script src="{% static 'attendanceApp/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static  'attendanceApp/bootstrap.js' %}"></script>
+</html>
