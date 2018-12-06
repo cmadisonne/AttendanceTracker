@@ -5,27 +5,35 @@
 <link rel="stylesheet" href="{% static 'attendanceApp/css/index.css' %}">
 
 <div align="middle" class="history">
-    <H1>{{user.get_username}} Attendance History</H1>
+    <h1>{{user.get_username}}</h1>
+    <h1> Attendance History</h1>
     <hr width="75%" class="hr"/>
 
 {% block jumbotron %}
     {% if clockInRecord or clockOutRecord%}
 
-    <table>
-        <tr>
-            <th>Clocked-In</th>
-            <th>Clocked-Out</th>
-        </tr>
-        <tr>
-            {% for record in clockInRecord %}
-            <td>{{ record.clockIn }}</td>
-            {% endfor %}
-            {% for record in clockOutRecord %}
-            <td>{{record.clockOut}}</td>
-            {% endfor %}
+    <div class="row justify-content-center">
+       <h1>Clocked-In</h1>
+    </div>
+    <br/>
+    <div class="row justify-content-center">
+        {% for record in clockInRecord %}
+        <h3 class="col-12">In at: {{record.clockIn}}</h3>
+        {% endfor %}
+    </div>
+    <hr/>
+    <div class="row justify-content-center">
+        <h1>Clocked-Out</h1>
+    </div>
+    <br/>
+    <div class="row justify-content-center">
+        {% for record in clockOutRecord %}
+        <h3 class="col-12">Out at: {{record.clockOut}}</h3>
+        {% endfor %}
+    </div>
+    <hr/>
+    <a href="{% url 'logout' %}"><button class="btn btn-outline-danger">Log Out</button></a>
 
-        </tr>
-    </table>
 
 </div>
 
@@ -35,6 +43,9 @@
     <div class="UserSetUp">
         <h1> Welcome!</h1>
         <p>No Attendance Available.</p>
+        <a class=""  href="{% url 'login'%}"><button class="btn btn btn-outline-danger">Click here to log in a student.</button></a>
+        <br/><br/>
+        <a href="{% url 'logout' %}"><button class="btn btn-outline-danger">Log Out</button></a>
     </div>
 </div>
 {% endif %}
