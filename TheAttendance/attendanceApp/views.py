@@ -31,7 +31,7 @@ def timeIn(request):
             form.password = form.cleaned_data['password']
             form.clockIn = form.cleaned_data['clockIn']
             form.save()
-            return redirect('inComf')
+            return redirect('clock')
     else:
         form = clockInForm()
         return render(request, 'attendanceApp/clockIn.html', {'form':form})
@@ -44,7 +44,7 @@ def timeOut(request):
             form.password = form.cleaned_data['password']
             form.clockOut = form.cleaned_data['clockOut']
             form.save()
-            return redirect('outComf')
+            return redirect('clock')
     else:
         form = clockOutForm()
         return render(request, 'attendanceApp/clockOut.html', {'form':form})
@@ -52,8 +52,3 @@ def timeOut(request):
 def base (request):
     return render(request, 'attendanceApp/base.html')
 
-def clockInComf (request):
-    return render(request, 'attendanceApp/clockInComf.html')
-
-def clockOutComf (request):
-    return render(request, 'attendanceApp/clockOutComf.html')

@@ -16,7 +16,7 @@
        <h1>Clocked-In</h1>
     </div>
     <br/>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" id="clockin">
         {% for record in clockInRecord %}
         <h3 class="col-12">In at: {{record.clockIn}}</h3>
         {% endfor %}
@@ -26,7 +26,7 @@
         <h1>Clocked-Out</h1>
     </div>
     <br/>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" id="clockout">
         {% for record in clockOutRecord %}
         <h3 class="col-12">Out at: {{record.clockOut}}</h3>
         {% endfor %}
