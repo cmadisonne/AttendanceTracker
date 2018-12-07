@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.contrib.auth import logout
+from django.contrib import messages
+
 
 @login_required
 def index(request):
@@ -31,6 +33,7 @@ def timeIn(request):
             form.password = form.cleaned_data['password']
             form.clockIn = form.cleaned_data['clockIn']
             form.save()
+            messages.success(request, 'You have successfully PLUGGED  IN')
             return redirect('clock')
     else:
         form = clockInForm()
@@ -44,6 +47,7 @@ def timeOut(request):
             form.password = form.cleaned_data['password']
             form.clockOut = form.cleaned_data['clockOut']
             form.save()
+            messages.success(request, 'You have successfully PLUGGED  OUT')
             return redirect('clock')
     else:
         form = clockOutForm()
