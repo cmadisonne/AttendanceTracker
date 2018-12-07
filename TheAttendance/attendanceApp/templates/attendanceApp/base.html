@@ -13,12 +13,19 @@
     </div>
     <div class="card-body">
         <h5 class="card-title">Hello</h5>
-        <p class="card-text">Would you like to clock-in or clock-out?</p>
+        <p class="card-text">Would you like to plug-in or unplug?</p>
         <span>
-            <a href="{% url 'clockIn' %}"><button class="btn btn-warning btn-lg">Clock-In</button></a>
-            <a href="{% url 'clockOut' %}"><button class="btn btn-warning btn-lg">Clock-Out</button></a>
+            <a href="{% url 'clockIn' %}"><button class="btn btn-warning btn-lg">Plug-In</button></a>
+            <a href="{% url 'clockOut' %}"><button class="btn btn-warning btn-lg">Unplug</button></a>
         </span>
     </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{messages.tags}}">{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <div class="card-footer text-muted">
         The Best Things Arrive On Time
     </div>
