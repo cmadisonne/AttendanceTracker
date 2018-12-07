@@ -1,4 +1,8 @@
-{% extends  'attendanceApp/index.html'%}
-{% load static %}
+#clockin{
+    background-color: #C2EFEB;
+}
 
+#clockout{
+    background-color: #C8CBC5;
+}
 
