@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
 from .models import clockOut, clockIn
 from .forms import clockInForm, clockOutForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.contrib.auth import logout
 
 @login_required
 def index(request):
